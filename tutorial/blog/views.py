@@ -4,4 +4,8 @@ from blog.models import Post
 
 def home(request):
     posts = Post.objects.all()
-    return render(request, 'blog/home.html')
+    return render(request, 'blog/home.html', context= {'posts': posts})
+
+def post(request, id):
+    post = Post.objects.get(id=id)
+    return render(request, 'blog/post.html', context= {'post': post})
